@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Photo Rated";
+}
+
+<h2>Photo Rated</h2>
+
+<div>
+    @Html.ActionLink("Rate More Photos", "Index", "Home") or @Html.ActionLink("View Your Rating History", "History", "Home", new { UserID = @Session["UserID"].ToString() }, null)
+</div>
+

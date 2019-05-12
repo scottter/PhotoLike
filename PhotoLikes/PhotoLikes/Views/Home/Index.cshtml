@@ -1,0 +1,32 @@
+﻿@using PhotoLikes.Models
+@model PhotoLikes.Models.Photo
+<script src="~/Scripts/jquery-3.3.1.slim.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#like_button').click(function () {
+            $('#PhotoRating').val('Like');
+            console.log($('#PhotoRating').val());
+            $('#frm').submit();
+        });
+        $('#dislike_button').click(function () {
+            $('#PhotoRating').val('Dislike');
+            console.log($('#PhotoRating').val());
+            $('#frm').submit();
+        });
+    });    
+</script>
+<div class="row">
+    <div class="col-md-8">
+        <h2>Welcome to PhotoLike</h2>
+        <img src="@Model.PhotoUrl" alt="Do you like this image?" />
+        @using (Html.BeginForm("RatePhoto", "Home", FormMethod.Post, new { name = "frm", id = "frm" }))
+        {
+            <input type="hidden" id="PhotoId" name="PhotoId" value="@Model.ID" />
+            <input type="hidden" id="PhotoRating" name="PhotoRating" value="Like" />
+        }
+            <div>
+                <button id="like_button" type="button" class="alert-success">Like</button>
+                <button id="dislike_button" type="button" class="alert-warning">Dislike</button>
+            </div>
+    </div>
+</div>  

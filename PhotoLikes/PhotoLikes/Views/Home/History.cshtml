@@ -1,0 +1,42 @@
+﻿@model PhotoLikes.Models.User
+  
+@{
+    ViewBag.Title = "History";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>
+    @if (ViewBag.Error != null)
+    {
+        <h3 style="color:red">@ViewBag.Error</h3>
+    }
+    else
+    {
+        <dl>
+            <dd>
+                <table class="table">
+                    <tr>
+                        <th>Image</th>
+                        <th>Rating</th>
+                    </tr>
+                    @foreach (var item in Model.PhotoRatings)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@Html.DisplayFor(modelItem => item.Photo.PhotoUrl)" class="history-img" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Rating)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </dd>
+        </dl>
+    }
+    <dl>
+        <dd>@Html.ActionLink("Rate More Photos", "Index", "Home")</dd>
+    </dl>
+
+</div>
